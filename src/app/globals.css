@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f8f3e9;
+  --color-cream-deep: #f1e8d6;
+  --color-ivory: #fdfaf4;
+  --color-gold: #c5a267;
+  --color-gold-dark: #a9873f;
+  --color-gold-soft: #e6d7b8;
+  --color-cocoa: #493725;
+  --color-cocoa-soft: #6f5b45;
+  --color-sand: #e4d6bd;
+
+  --font-serif: "Playfair Display", "Times New Roman", serif;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 24px 60px -32px rgba(73, 55, 37, 0.35);
+  --shadow-card: 0 18px 40px -28px rgba(73, 55, 37, 0.45);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-cocoa);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+  }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: #fff;
+  }
+}
+
+@layer components {
+  .container-x {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 80rem;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 1024px) {
+    .container-x {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--color-gold-dark);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 1.9rem;
+    height: 1px;
+    background-color: var(--color-gold);
+    display: inline-block;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.6rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: all 220ms ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+
+  .btn-gold {
+    background-color: var(--color-gold);
+    color: #fffaf0;
+  }
+
+  .btn-gold:hover {
+    background-color: var(--color-gold-dark);
+  }
+
+  .btn-dark {
+    background-color: var(--color-cocoa);
+    color: var(--color-cream);
+  }
+
+  .btn-dark:hover {
+    background-color: #362817;
+  }
+
+  .btn-outline {
+    border-color: var(--color-gold);
+    color: var(--color-cocoa);
+    background-color: transparent;
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-gold);
+    color: #fffaf0;
+  }
+
+  .btn-ghost {
+    border-color: color-mix(in srgb, var(--color-cocoa) 20%, transparent);
+    color: var(--color-cocoa);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold-dark);
+  }
+
+  .card {
+    background-color: var(--color-ivory);
+    border: 1px solid color-mix(in srgb, var(--color-sand) 70%, transparent);
+    box-shadow: var(--shadow-card);
+  }
+
+  .arch {
+    border-radius: 999px 999px 0.25rem 0.25rem;
+  }
+
+  .field {
+    width: 100%;
+    background-color: #fffdf8;
+    border: 1px solid color-mix(in srgb, var(--color-sand) 90%, transparent);
+    padding: 0.7rem 0.9rem;
+    font-size: 0.875rem;
+    color: var(--color-cocoa);
+    outline: none;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+  }
+
+  .field:focus {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(197, 162, 103, 0.18);
+  }
+
+  .field-label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-cocoa-soft);
+    margin-bottom: 0.4rem;
+  }
+
+  .hairline {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      color-mix(in srgb, var(--color-gold) 55%, transparent),
+      transparent
+    );
+  }
+
+  .link-underline {
+    position: relative;
+  }
+
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 1px;
+    width: 0;
+    background-color: var(--color-gold);
+    transition: width 220ms ease;
+  }
+
+  .link-underline:hover::after {
+    width: 100%;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pattern-gold {
+  background-image: radial-gradient(
+      circle at 1px 1px,
+      color-mix(in srgb, var(--color-gold) 35%, transparent) 1px,
+      transparent 0
+    );
+  background-size: 18px 18px;
+}
